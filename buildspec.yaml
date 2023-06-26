@@ -6,22 +6,17 @@ phases:
     commands:
       - echo Entered the install phase...
       - ls -l
-
-    finally:
-      - echo This always runs even if the update or install command fails 
   pre_build:
     commands:
       - echo Entered the pre_build phase...
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 264183715775.dkr.ecr.us-east-1.amazonaws.com
-    finally:
-      - echo This always runs even if the login command fails 
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
       - cat index.html
-    finally:
-      - echo This always runs even if the install command fails
+      - docker build -t 264183715775.dkr.ecr.us-east-1.amazonaws.com/web-app:init
+      - docker push 264183715775.dkr.ecr.us-east-1.amazonaws.com/web-app:init 
   post_build:
     commands:
       - echo Entered the post_build phase...
