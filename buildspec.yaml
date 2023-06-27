@@ -15,8 +15,8 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
       - cat index.html
-      - docker build -t 264183715775.dkr.ecr.us-east-1.amazonaws.com/web-app:init .
-      - docker push 264183715775.dkr.ecr.us-east-1.amazonaws.com/web-app:init 
+      - docker build -t 902013287642.dkr.ecr.us-east-1.amazonaws.com/web-app:init .
+      - docker push 902013287642.dkr.ecr.us-east-1.amazonaws.com/web-app:init 
   post_build:
     commands:
       - echo Entered the post_build phase...
