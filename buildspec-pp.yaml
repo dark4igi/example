@@ -21,7 +21,9 @@ phases:
       - echo Build started on `date`
       - cat index.html
       - docker build -t $REPO_URL:$IMAGE_TAG .
+      - docker tag $REPO_URL:$IMAGE_TAG $REPO_URL:latest
       - docker push $REPO_URL:$IMAGE_TAG 
+      - docker push $REPO_URL:latest
   post_build:
     commands:
       - echo Entered the post_build phase...
