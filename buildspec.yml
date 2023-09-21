@@ -1,0 +1,23 @@
+version: 0.2
+
+
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - ls -l
+  pre_build:
+    commands:
+      - echo Entered the pre_build phase...
+      - echo docker hub login
+      - docker login -u $LOGIN -p $PASSWD
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - cat index.html
+      - docker build  .
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
